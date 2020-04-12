@@ -1,0 +1,137 @@
+html , body , ul , ol , p , h1,h2,h3,h4,h5,h6 {
+    padding: 0;
+    margin: 0;
+}
+ul , ol {
+    list-style: none;
+}
+a,
+a:hover ,
+a:focus {
+    color: #333;
+    text-decoration: none;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.p_wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    height: 1000px;
+    background-color: #ccc;
+}
+
+.p_header h3 {
+    height: 80px;
+    background-color: #333;
+    text-align: center;
+    color: #fff;
+    line-height: 80px;
+}
+.p_section {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.p_section .p_main {
+    width: 700px;
+    height: 700px;
+    background-color: #f0f0f0;
+    float: left;
+    margin-left: 25px;
+    text-align: center;
+    line-height: 700px;
+    background-color: #000;
+}
+
+.p_section .p_main  .video_box {
+    width: 700px;
+    vertical-align: middle;
+}
+.p_section .p_list {
+    width: 450px;
+    height: 700px;
+    background-color: skyblue;
+    float: left;
+    margin-left: 25px;
+}
+
+.p_footer {
+    height: 80px;
+    background-color: #333;
+    color: #fff;
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+.p_footer .p_footer_left {
+    width: 700px;
+    height: 80px;
+    background-color: rgba(255,255,255,.5);
+}
+.p_footer_left .btn_box {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: #f50;
+    float: left;
+    margin-top: 15px;
+}
+.p_footer_left .btn_box span {
+    display: none;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.p_footer_left .btn_box span.show {
+    display: block;
+}
+
+.p_footer_left .progress_box {
+    width: 600px;
+    height: 80px;
+    float: left;
+}
+.p_footer_left .progress_box .up {
+    height: 30px;
+    line-height: 30px;
+}
+.p_footer_left .progress_box .down {
+    height: 25px;
+    padding-top: 25px;
+}
+.p_footer_left .progress_box .down .progress {
+    width: 600px;
+    height: 5px;
+    background-color: #fff;
+}
+.p_footer_left .progress_box .down .progress .bar {
+    width: 0px;
+    height: 5px;
+    background-color: red;
+}
+.p_footer_left .other {
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* background-color: #ccc; */
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+}
+.p_footer_left .other:hover {
+    background-color: #666;
+}
+.p_footer_left .other span {
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+}

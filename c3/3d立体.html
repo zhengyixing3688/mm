@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            display: flex;
+            height: 100%;
+            margin:0;
+            perspective: 400px;
+        }
+        .cube{
+            height: 200px;
+            width: 200px;
+            margin: auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: donghua 8s infinite;
+            transform: rotateX(335deg) rotateY(48deg);
+        }
+        @keyframes donghua{
+            0%{
+                transform: rotateX(0deg) rotateY(0deg)
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(360deg)
+            }
+        }
+        .cube span{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.8;
+            display: block;
+        }
+        span:nth-child(1){
+            background-color: chartreuse;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        span:nth-child(2){
+            background-color: rgb(198, 99, 211);
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        span:nth-child(3){
+            background-color: rgb(94, 206, 122);
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        span:nth-child(4){
+            background-color: rgb(176, 206, 94);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        span:nth-child(5){
+            background-color: rgb(216, 179, 59);
+            transform: translateZ(-100px);
+        }
+        span:nth-child(6){
+            background-color: rgb(235, 89, 52);
+            transform: translateZ(100px);
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="cube">
+        <span>top</span>
+        <span>bottom</span>
+        <span>left</span>
+        <span>right</span>
+        <span>后面</span> 
+        <span>正面</span> 
+    </div>
+    
+</body>
+</html>

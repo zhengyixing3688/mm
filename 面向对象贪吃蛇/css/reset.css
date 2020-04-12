@@ -1,0 +1,32 @@
+html , body , ul , ol , h3 {
+    padding: 0;
+    margin: 0;
+}
+ul , ol {
+    list-style: none;
+}
+input , textarea {
+    border: 0;
+    outline: none;
+}
+a , 
+a:hover ,
+a:focus {
+    color: #333;
+    text-decoration: none;
+    outline: none;
+}
+
+
+/* 公共样式 */
+.f_left {
+    float: left;
+}
+.f_right {
+    float: right;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}

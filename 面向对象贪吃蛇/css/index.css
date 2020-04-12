@@ -1,0 +1,28 @@
+.wrapper {
+    width: 1200px;
+    margin: 50px;
+}
+.game {
+    width: 600px;
+    height: 600px;
+    background-color: skyblue;
+}
+.game .map {
+    width: 90px;
+    height: 90px;
+}
+.game .map ul {
+    height: 30px;
+}
+.game .map ul li {
+    width: 28px;
+    height: 28px;
+    border:1px solid #fff;
+    float: left;
+}
+.game .map ul li.snake {
+    background-color: blue;
+}
+.game .map ul li.egg {
+    background-color: orange;
+}
