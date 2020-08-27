@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0 auto;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            /* background-repeat: no-repeat; 
+             */
+             /* width: calc(~"100% - 10px"); */
+            background-size: cover;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .bjt{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -10;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-position: center;
+              filter: blur(85px); 
+              transform: scale(1.2);
+              background-size: cover;
+        }
+        .stage{
+            width: 500px;
+            position: absolute;
+        
+            z-index: 100 !important;
+        }
+        .card{
+            padding: 25px;
+            display: flex;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 0 15px 0 gray;
+        }
+        .card .mask{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+             /* background-image: url(images/1.jpg);  */
+             background-size: cover;
+             background-position: center;
+             filter: blur(20px) brightness(0.6);
+             transform: scale(1.2);
+             z-index: -1;
+        }
+        .card .glue{
+            width: 130px;
+            height: 130px;
+            background: url(images/cd.png);
+            background-size: 100%;
+            padding: 25px;
+            box-sizing: border-box;
+            animation: myrotate 6s linear infinite;
+            animation-play-state: paused;
+        }
+        .glue img{
+            width: 100%;
+            border-radius: 50%;
+        }
+        .card .finger{
+            width: 25px;
+            background-color: red;
+            background: url(images/cd_tou.png)no-repeat;
+            background-size: 100%;
+            margin-left: -10px;
+            transform-origin: 15px 10px;
+            transform: all 0.3s;
+            transform: rotate(-15deg);
+
+        }
+        .stage.playing .card .finger{
+            transform: rotate(4deg);
+        }
+        .stage.playing .card .glue{
+            animation-play-state: running;
+        }
+        .card .right {
+                flex: 1;
+                margin-left: 15px;
+                color: white;
+            }
+        @keyframes myrotate{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        .progress input{
+            width: 100%;
+        }
+        ul li.playing{
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="bjt"    >
+        
+    </div>
+    <div class="stage ">
+        <audio autoplay src=""></audio>
+        <div class="card">
+            <div class="mask"></div>
+            <div class="glue">
+                <img src="./images/1.jpg">
+            </div>
+            <div class="finger"></div>
+            <div class="right">
+                <h3>降临(Live)</h3>
+                <h5>(Live)</h5>
+                <div class="contral">
+                    <button class="prev">上</button>
+                    <button class="play">播放</button>
+                    <button class="next">下</button>
+                </div>
+                <div class="progress">
+                    <input type="range" value="0" min="0" step="0.01" max="100" />
+                </div>
+                <div class="time">
+                    <span>00:00</span>
+                    <span>00:00</span>
+                </div>
+            </div>
+        </div>
+        <ul class="list"></ul>
+    </div>
+    <script src="playlist.js"></script>
+    <script>
+        var bjt = document.getElementsByClassName('bjt')[0]
+
+        var list = document.getElementsByClassName('list')[0];
+        var audio = document.getElementsByTagName('audio')[0];
+        // console.log(audio)
+        var prev = document.getElementsByClassName('prev')[0];
+        var play = document.getElementsByClassName('play')[0];
+        var next = document.getElementsByClassName('next')[0];
+        var stage = document.getElementsByClassName('stage')[0]
+        // var progress = document.getElementsByClassName('progress')[0];
+        // var progressinput = progress.getElementsByTagName('input')[0];
+        var progress = document.querySelector(".progress input");
+        var span = document.getElementsByTagName('span');
+        console.log(span)
+        var h3 = document.querySelector("h3");
+        var h5 = document.querySelector("h5");
+        var current = 0;
+        // var list = document.querySelector("ul.list");
+        
+        for(var i = 0;i<playlist.length;i++){
+            // console.log(playlist)
+            var cre = document.createElement('li');
+            // console.log(cre)
+            cre.innerText = playlist[i].name;
+            list.appendChild(cre);
+        };
+        changeSong(playlist[current]);
+        play.onclick = function(){
+            if(audio.paused){
+                audio.play();
+            }else{
+                audio.pause();
+            }
+            console.log(this)
+        }
+        function countUrl(id) {
+                return "https://music.163.com/song/media/outer/url?id=" + id + ".mp3";
+            }
+        audio.onplay = function(){
+            // console.log(audio)
+            stage.classList.add('playing');
+            play.innerText = '暂停';
+        }    
+        prev.onclick = function(){
+            // console.log(this,'......////')
+            current -- ;
+            if(current < 0){
+                current = playlist.length-1;
+            }
+            changeSong(playlist[current]);
+
+        }    
+        next.onclick = function(){
+            console.log(this,'.//,.,.l')
+            current ++;
+            if(current > 3){
+                current = 0;
+            }
+            changeSong(playlist[current])
+        }
+        audio.onpause = function(){
+            stage.classList.remove('playing');
+            play.innerText = '播放'
+        }
+        function changeSong(obj) {
+                
+                audio.src = countUrl(obj.id);
+                h3.innerText = obj.name;
+                h5.innerText = obj.artists;
+
+                document.querySelector(".glue img").src = obj.picUrl;
+                document.querySelector(".mask").style.backgroundImage = 'url("' + obj.picUrl + '")';
+                bjt.style.backgroundImage = 'url("' + obj.picUrl + '")';
+                document.querySelectorAll("ul.list li").forEach(function(element, index) {
+                    if (index == current) {
+                        element.classList.add("playing");
+                    } else {
+                        element.classList.remove("playing");
+                    }
+                });
+            };
+            audio.ontimeupdate = function(){
+                // console.log(this.currentTime, this.duration,'...........');
+                if(isNaN(this.duration)){
+                    return;
+                }
+                progress.value = (this.currentTime/this.duration)*100;
+                // console.log(progress.value,'========-----------??????')
+                span[0].innerText = countTime(this.currentTime);
+            };
+            function countTime(n){
+                var n = Math.floor(n);
+                var m = Math.floor(n/60);
+                var s = n % 60;
+                m = m > 9 ? m : '0' + m;
+                s = s > 9 ? s : '0' + s;
+                return m + ':' + s;
+            };
+            progress.onchange = function(){
+                console.log(this.value,'//////////////');
+                var v1 = this.value / 100;
+                audio.currentTime = v1 * audio.duration;
+            };
+            audio.ondurationchange = function(){
+                span[1].innerText = countTime(this.duration);
+            };
+            // 列表顺序播放
+            audio.onended = function() {
+                current++;
+                if (current > playlist.length - 1) {
+                    // 重新从0播放
+                    current = 0;
+                }
+                changeSong(playlist[current]);
+            };
+    </script>
+</body>
+</html>

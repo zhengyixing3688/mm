@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul,p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a,
+        a:hover,
+        a:focus{
+            color: #333;
+            text-decoration: none;
+        }
+        .container{
+            width: 1200px;
+            margin:0 auto 50px;
+        }
+        .container ul{
+            width: 1200px;
+            position: relative;
+        }
+        .container ul li{
+            width: 230px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .container ul li a {
+            width: 230px;
+            display: block;
+            border: 1px solid #ccc;
+        }
+        .container ul li a img{
+            width: 230px;
+            display: block;
+        }
+        .container ul li a p{
+            width: 210px;
+            padding: 10px 10px;
+            background-color: #fff;
+            font-size: 14px;
+            color: #666;
+            text-align: justify;
+        }
+        .container ul li:nth-child(2n) a img{
+            height: 250px;
+        }
+        .container ul li:nth-child(2n-1) a img{
+            height: 400px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <ul>
+                <!-- <li>
+                    <a href="javascript:;">
+                        <img src="images/1.jpg" alt="">
+                        <p></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/1.jpg" alt="">
+                        <p></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/1.jpg" alt="">
+                        <p></p>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <script src="ajaxV0.0.3.js"></script> 
+    <script>
+        var ul = document.querySelector('.container ul');
+        var local_data_str = localStorage.getItem('waterfall_data')
+        console.log(local_data_str)
+        if(local_data_str){
+            var data = JSON.parse(local_data_str);
+            render(data)
+        }else{
+            $.ajax({
+                url:'./data.json',
+                type:'get',
+                success:function(res){
+                    var dataStr = JSON.stringify(res);
+                    // console.log(dataStr)
+                    localStorage.setItem('waterfall_data',dataStr)
+                    render(res)
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+        function waterfal(){
+            var items = document.querySelectorAll('.container ul li');
+            var column = 5;
+            var width = ul.offsetWidth;
+            var w = items[0].offsetWidth;
+            var space = (width - column*w)/(column-1);
+            var arrHeight = [];
+            for(var i = 0;i <items.length;i++){
+                var h = items[i].offsetHeight;
+                if(i < 5){
+                    arrHeight.push(h);
+                    items[i].style.top = '0px';
+                    items[i].style.left = i * (w + space) +'px';
+                }else{
+                    var min = arrHeight[0];
+                    var minIndex = 0;
+                    for(var j = 1 ; j<arrHeight.length;j++){
+                        if(min>arrHeight[j]){
+                            min = arrHeight[j]
+                            minIndex  = j;
+                        }
+                    }
+                    arrHeight[minIndex] += h + space;
+                    items[i].style.top = min + space + 'px';
+                    items[i].style.left = minIndex * (w + space)+'px';
+                }
+            }
+        }
+        function render(data){
+            var html = "";
+            for(var i = 0;i < data.length;i++){
+                html += '<li>'
+                html += '    <a href="javascript:;">'
+                html += '        <img src="'+data[i].path+'" alt="">'
+                html += '        <p>'+data[i].text+'</p>'
+                html += '    </a>'
+                html += '</li>'
+            }
+            ul.innerHTML =  html;
+            waterfal()
+        }
+    </script>
+</body>
+</html>

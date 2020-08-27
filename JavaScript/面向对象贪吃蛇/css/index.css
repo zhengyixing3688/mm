@@ -1,0 +1,40 @@
+.wrapper {
+    width: 1200px;
+    margin: 50px;
+}
+.game {
+    width: 600px;
+    height: 600px;
+    margin-top: 10px;
+    background-color: rgb(233, 244, 248);
+}
+.game .map {
+    width: 90px;
+    height: 90px;
+}
+.game .map ul {
+    height: 30px;
+}
+.game .map ul li {
+    width: 28px;
+    height: 28px;
+    border:1px solid rgb(248, 102, 102);
+    float: left;
+}
+.game .map ul li.snake {
+    background-color:rgb(119, 221, 127);
+}
+.game .map ul li.egg {
+    background-color: rgb(88, 59, 5);
+}
+.cout{
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: blanchedalmond;
+}
+.btn {
+    padding: 10px;
+    background: coral;
+    margin-left: 10px;
+    cursor: pointer;
+}

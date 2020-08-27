@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgba(32, 3, 3, 0.829);
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .fl{
+            float: left;
+        }
+        .clearfix::before{
+            display: block;
+            content: "";
+            clear: both;
+        }
+        .wra{
+            width: 150px;
+            height: 150px;
+            /* border: 1px solid red; */
+            /* margin: 0 auto; */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .wra span{
+            /* display: inline-block; */
+            width: 7px;
+            height:50px;
+            border-radius: 4px;
+            background: lightgreen;
+            margin-left: 10px;
+            margin-top: 30px;
+            animation: load 1s ease infinite;
+        }
+        @keyframes load{
+            0%,100%{
+                height: 20px;
+                background: green;
+            }
+            50%{
+                height: 60px;
+                background-color: lightblue;
+            }
+        }
+        span:nth-child(2){
+            animation-duration: 0.6s;
+        }
+        span:nth-child(3){
+            animation-duration: 0.4s;
+        }
+        span:nth-child(4){
+            animation-duration: 0.8s;
+        }
+        span:nth-child(5){
+            animation-duration: 1s;
+        }
+        span:nth-child(6){
+            animation-duration: 0.5s;
+        }
+
+        /* ===== */
+        .box{
+            width: 150px;
+            height: 150px;
+            /* border: 1px solid red; */
+        
+            /* margin: 0 auto; */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .box ul li{
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background-color: hotpink;
+            float: left;
+            margin-left: 6px;
+            animation: load1 1.04s ease infinite;
+        }
+        @keyframes load1{
+            0%{
+                opacity:1;
+            }
+            100%{
+                opacity:0;
+            }
+        }
+        .box li:nth-child(1){
+            animation-duration: 0.63s;
+        }
+        .box li:nth-child(2){
+            animation-duration: 0.73s;
+        }
+        .box li:nth-child(3){
+            animation-duration: 0.83s;
+        }
+        .box li:nth-child(4){
+            animation-duration: 0.93s;
+        }
+        .box li:nth-child(5){
+            animation-duration: 1.03s;
+        }
+        .box li:nth-child(6){
+            animation-duration:1.04s;
+        }
+        .box li:nth-child(7){
+            animation-duration:1.05s;
+        }
+    </style>
+    <!-- ====== -->
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            /* background-color: #eeebe8;
+             */
+             /* background-color: rgba(32, 3, 3, 0.829); */
+        }
+
+        .flex {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+        }
+
+        .flex-in {
+            width: 420px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pen {
+            width: 100%;
+            line-height: 1;
+            margin-top: 0;
+            margin-bottom: 0;
+            color: #6e6862;
+            font-size: 3rem;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: .05em;
+        }
+
+        .pen {
+            width: 100%;
+            color: #3c3732;
+            text-align: center;
+            letter-spacing: .2em;
+        }
+    </style>
+    <!-- ========= -->
+    <style>
+        body {
+            width: 600px;
+            margin: 0 auto;
+            background-color: rgba(32, 3, 3, 0.829);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        svg {
+            margin: 10px auto;
+           padding-left: 20px;
+        }
+        /* .test {
+                stroke: orange;
+                fill: transparent;
+                
+            } */
+    </style>
+</head>
+<body>
+    <div class="big-box clearfix">
+        <div class="wra fl">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    
+        <div class="box fl">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <canvas id="loading1" width="150" height="150">
+    </canvas>
+    <script>
+        /** @type {HTMLCanvasElement} */
+        function loading1() {
+            var canvas = document.getElementById("loading1"),
+                context = canvas.getContext("2d"),
+                w = canvas.width,
+                h = canvas.height,
+                x = w / 2,
+                y = h / 2,
+                radius = 30;
+            // context.fillStyle = "yellow";
+            context.fillRect(0, 0, w, h);
+           
+
+            var r = [3, 4, 4.5, 5, 6, 7];
+            var an = [10, 25, 45, 65, 90, 120];
+            var a = [1, 2,3, 4, 5, 6];
+            var x1 = [], y1 = [];
+
+            setInterval(function () {
+                context.fillStyle = "rgba(32, 3, 3, 0.829)";
+                context.fillRect(0, 0, w, h);
+                x1 = [];
+                y1 = [];
+                for (var i = 0; i < r.length; i++) {
+                    if (an[i] >= 360) an[i] = 0;
+                    context.beginPath();
+                    context.fillStyle = "rgba(255,255,255," + a[i] + ")";
+                    x1.push(x + radius * Math.cos(an[i] * Math.PI / 180));
+                    y1.push(y + radius * Math.sin(an[i] * Math.PI / 180));
+                    context.arc(x1[i], y1[i], r[i], 0, 2 * Math.PI, true);
+                    context.closePath();
+                    context.fill();
+                    an[i] += 5;
+                }
+            }, 25);
+        }
+        loading1()
+    </script>
+    <!-- ====== -->
+    <!-- <h1>Loading Images</h1> -->
+    <svg width="150" height="150" viewBox="0 0 100 100" style="fill: orange;">
+        <rect x="0" y="0" width="10" height="20" style="">
+            <animate attributeType="XML" attributeName="height" values="40; 100;40" dur="0.6s"
+                repeatCount="indefinite" />
+        </rect>
+        <rect x="40" y="0" width="10" height="20" style="">
+            <animate begin="0.2s" attributeType="XML" attributeName="height" values="40; 100;40" dur="0.6s"
+                repeatCount="indefinite" />
+        </rect>
+        <rect x="80" y="0" width="10" height="20" style="">
+            <animate begin="0.4s" attributeType="XML" attributeName="height" values="40; 100;40" dur="0.6s"
+                repeatCount="indefinite" />
+        </rect>
+    </svg>
+    <!-- ========= -->
+    <svg width="150" height="150" viewBox="0 0 50 50">
+       <path  d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" style="stroke: yellow;">
+            <animateTransform 
+            attributeType="xml" 
+            attributeName="transform" 
+            type="rotate" 
+            from="0 25 25" 
+            to="360 25 25"
+            dur="0.6s" 
+            repeatCount="indefinite" />
+       </path>
+    </svg>
+    <!-- ======= -->
+    <svg   width="150" height="150" viewBox="0 0 24 30" >
+    <rect x="0" y="0" width="4" height="10" fill="yellow">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="yellow">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="10" fill="yellow">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+</body>
+</html>

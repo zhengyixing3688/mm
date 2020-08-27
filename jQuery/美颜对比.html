@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+        <style>
+            .stage {
+                width: 400px;
+                margin: 0 auto;
+                position: relative;
+            }
+            .before {
+                width: 50%;
+                height: 100%;
+                position: absolute;
+                /* background: rgba(255, 0, 0, 0.3); */
+                background: url('images/before.jpg');
+                background-size: auto 100%;
+            }
+            .stage img.after {
+                width: 100%;
+                /* display: block; */
+                vertical-align: middle;
+            }
+            .stage input {
+                width: 100%;
+                /* height: 100%; */
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                opacity: 0;
+            }
+
+            .progress {
+                width: 100%;
+                height: 20px;
+                background: rgba(255, 255, 255, 0.3);
+                position: absolute;
+                /* z-index: 1; */
+                left: 0;
+                bottom: 0;
+            }
+            .progress span{
+                display: block;
+                width: 10px;
+                height: 20px;
+                background: white;
+                position: relative;
+                left: 50%;
+                margin-left: -5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="stage">
+            <div class="before"></div>
+            <img class="after" src="images/after.jpg" alt="" />
+            <input type="range" min="0" max="100" />
+            <div class="progress">
+                <span></span>
+            </div>
+        </div>
+
+        <script>
+            // .click() 如果jq没有封装的事件方法 就可以用bind
+            $(".stage input").bind("input", function() {
+                console.log($(this).val());
+                // 改变 before 宽度
+                $(".before").css("width", $(this).val() + "%");
+                $(".progress span").css("left", $(this).val() + "%");
+            });
+        </script>
+
+        <!-- 拓展 https://www.17sucai.com/pins/demo-show?id=25562 -->
+    </body>
+</html>

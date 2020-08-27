@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax  web储存  排版</title>
+    <style>
+        body , ul , p {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        a,
+        a:hover ,
+        a:focus {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .container ul {
+            width: 1200px;
+            position: relative;
+        }
+        .container ul li {
+            width: 230px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .container ul li a {
+            width: 230px;
+            display: block;
+            border: 1px solid #ccc;
+        }
+        .container ul li a img {
+            width: 230px;
+            display: block;
+        }
+        .container ul li a p {
+            width: 230px;
+            padding: 10px 0;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/1.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/2.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华</p>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/3.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华</p>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/4.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华</p>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/5.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华</p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!-- ajax -->
+    <script src="./ajaxV0.0.3.js"></script>
+    <script>
+        // 需求：
+            // 1.0 初始化页面 请求数据（读取本地文档）， 把数据储存在客户端
+            // 2.0 判断 当前客户端是否存在图文列表数据 
+            // 如果存在，那就不需要请求数据（读取本地文档）
+            // 如果不存，那就需要请求数据（读取本地文档）
+            // 3.0 瀑布流布局（JS逻辑）
+
+        // 步骤
+        // 1.0.1 检查当前客户端，是否有储存的数据  waterfall
+        var local_data_str =  localStorage.getItem('waterfall_data');
+        // 1.0.2 判断 当前客户端是否存在图文列表数据 
+        if(local_data_str){
+            // 存在本地缓存的数据
+            // console.log(local_data_str) //字符串
+            // 把字符串转成对象
+            var data = JSON.parse(local_data_str);
+            // console.log(data);
+        }else {
+            // 不存在本地缓存的数据
+            $.ajax({
+                url:"./data.json",
+                type:"get",
+                success:function(res){
+                    // console.log(res);// json对象
+                    // 设置缓存的图文列表数据
+                    // 把对象转成字符串
+                    var dataStr = JSON.stringify(res); 
+                    localStorage.setItem("waterfall_data",dataStr);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

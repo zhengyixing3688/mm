@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>发表.html</title>
+	<meta name="keywords" content="your keywords">
+	<meta name="description" content="your description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<!--[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]--><!--[if IE 9]>
+	<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/base64.min.js"></script>
+	<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/typedarray.min.js"></script>
+	<![endif]-->
+	<style type="text/css">
+		
+		html,body,ul{
+			padding: 0;
+			margin: 0;
+		}
+		ul{
+			list-style: none;
+
+		}
+		input ,textarea ,button{
+			border: 0;
+			outline: 0;
+			padding: 0;
+			display: block;
+		}
+		.wrapper{
+			width: 900px;
+			margin: 0 auto;
+			background-color: #ccc;
+		}
+		
+		.main .title{
+			height: 50px;
+
+		}
+		.main .title label{
+			margin-left: 20px;
+			height: 20px;
+
+		}
+		.main .title input{
+			margin-left: 20px;
+			height: 30px;
+			width: 800px;
+			margin: 0 auto;
+		}
+		.main  .content{
+			margin-top: 20px;
+
+		}
+		.main  .content label{
+			margin-left: 20px;
+		}
+		.main  .content .title1{
+			margin-left: 675px;
+		}
+		.main .content textarea{
+			margin-left: 20px;
+			width: 850px;
+			height: 150px;
+			resize: none;
+		}
+		.main .submit{
+			height: 80px;
+			margin-top: 20px;
+			background-color: #f8f8f8f8;
+			overflow: hidden;
+		}
+		.main .submit button{
+			height: 50px;
+			width: 120px;
+			margin-left: 20px;
+			margin-top: 15px;
+			cursor: pointer;
+		}
+		.main .list {
+			margin-top: 20px;
+
+		}
+		.main .list ul{
+			margin-left: 20px;
+			width: 480px;
+			padding: 10px 10px;
+			background-color: skyblue;
+		}
+		.main .list ul li{
+			background-color: #f8f8f8f8;
+			max-height: 100px;
+			position: relative;
+			border-bottom: 1px solid #ccc;
+		}
+		.main .list ul li h3{
+			font-weight: normal;
+			font-size: 14px;
+		}
+		.main .list ul li p{
+			font-size: 14px;
+
+		}
+		.main .list ul li span{
+			display: block;
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			line-height: 20px;
+			font-size: 12px;
+			border:1px solid #ccc;
+			cursor: pointer;
+
+			position: absolute;
+			right: 0;
+			top:0;
+
+		}
+	/*	.main .list ul li p img{
+			display: inline-block;
+			height: 60px;
+			width: 60px;
+			line-height: 60px;
+		}*/
+	</style>
+
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="main">
+			<div class="content">
+				<label for="title">内容 :</label>
+				<span  class="title1">最多输入30个字符</span>
+				 <textarea cols="30" id="content" rows="10"></textarea>
+			</div>
+			<div class="submit">
+				<button id="btn-submit">发表</button>
+			</div>
+			<div class="list">
+				
+			</div>
+		</div>
+	</div>
+		<script type="text/javascript">
+			var con = document.getElementById('content');
+			var btn = document.getElementById('btn-submit');
+			var list = document.getElementsByClassName('list')[0];
+			var createUl = document.createElement('ul');
+			list.appendChild(createUl);
+			var items = document.getElementsByClassName('del');
+
+			var html  = '';
+			btn.onclick = function(){
+				var v1 = con.value;
+
+				if (v1.length != 0 ) {
+					html += '<li>';
+					html += '<p>'+v1+'</p>';
+					html +=	"<span class='del'>x</span>"
+					html += "</li>"
+					
+				}
+				if (v1.length >=30) {
+					console.log('内容超出范围');
+					return;
+				}
+					
+				createUl.innerHTML = html;
+				for(var i = 0;i<items.length;i++){
+						removFumc(items[i])
+				}
+				
+			}
+			function removFumc(dom){
+				dom.onclick = function(){
+					var ele = this.parentElement;
+					createUl.removeChild(ele);
+				}
+			}
+		</script>
+	
+</body>
+</html>

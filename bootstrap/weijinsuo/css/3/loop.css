@@ -1,0 +1,15 @@
+.wjs_banner {
+    width: 100%;
+}
+.wjs_banner .item a {
+    width: 100%;
+    display: block;
+}
+.wjs_banner .item  a.pc {
+    height: 410px;
+    /* background-size: 100% 100%; */
+}
+.wjs_banner .item a.mb img {
+    width: 100%;
+    display: block;
+}

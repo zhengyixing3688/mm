@@ -1,0 +1,130 @@
+ol {
+    padding: 0;
+    margin: 0;
+}
+
+ol {
+    list-style: none;
+}
+
+/* mapH */
+.mapH {
+    width: 990px;
+    height: 300px;
+    /* background-color: skyblue; */
+    margin:auto;
+}
+
+.mapH ol {
+    width: 670px;
+    height: 300px;
+    margin:0 auto;
+    /* 相对定位 */
+    position: relative;
+}
+
+.mapH ol li {
+    width: 370px;
+    height: 240px;
+    
+    text-align: center; 
+    line-height: 100px;
+    font-size: 50px;
+    transition: left 0.5s linear;
+    position: absolute;
+
+}
+.mapH ol li img{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+.mapH ol li.mapH1 .hh1{
+    width: 100%;
+    height: 100%;
+}
+.mapH ol li.mapH2 .hh1{
+    width: 100%;
+    height: 100%;
+}
+.mapH ol li.mapH3 .hh1{
+    width: 100%;
+    height: 100%;
+}
+
+.mapH ol li.mapH1{
+    left: 100px;
+    top: 0;
+    z-index: 2;
+    transform: scale(0.9);
+}
+
+.mapH ol li.mapH2{
+    left: 150px;
+    top: 0px;
+    z-index: 3;
+    transform: scale(1);
+}
+
+.mapH ol li.mapH3{
+    left: 200px;
+    top: 0;
+    z-index: 2;
+    transform: scale(0.9);
+}
+.mapH ol li.mapH4{
+    left: 250px;
+    top: 0;
+    z-index: 1;
+    transform: scale(0.8);
+}
+.mapH ol li.mapH5{
+    left: 50px;
+    top: 0;
+    z-index: 1;
+    transform: scale(0.8);
+}
+.handle {
+    width: 500px;
+    height: 50px;
+    margin-left: 100px;
+    margin-top: 100px;
+    background-color: #ccc;
+}
+
+.handle>button {
+    width: 250px;
+    height: 50px;
+    float: left;
+}
+.mapH .btn .bt{
+    width: 20px;
+    height:40px;
+    text-align: center;
+    line-height: 40px;
+    /* display: none; */
+    /* background-color: #CCC; */
+
+}
+.mapH .btn{
+    display: none;
+}
+.mapH:hover .btn{
+    display: block;
+    color: white;
+}
+.mapH .btn .btn1{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    text-align: left;
+    z-index: 10;
+   
+}
+.mapH .btn .btn2{
+    position: absolute;
+    top: 100px;
+    text-align: right;
+    right: 0;
+    z-index: 10;
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax  web储存  排版</title>
+    <style>
+        body , ul , p {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        a,
+        a:hover ,
+        a:focus {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .container {
+           
+            width: 1200px;
+            margin: 50px auto 50px;
+        }
+        .container ul {
+            width: 1200px;
+            position: relative;
+        }
+        .container ul li {
+            width: 230px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .container ul li a {
+            width: 230px;
+            display: block;
+            border: 1px solid #ccc;
+        }
+        .container ul li a img {
+            width: 230px;
+            display: block;
+        }
+        
+        .container ul li a p {
+            width: 230px;
+            padding: 10px 0;
+            background-color: #fff;
+        }
+
+
+        /* 利用伪类选择器控制每列li下img标签的高度 */
+        /* 加载图片的时候有延迟 */
+        /* 2n 表示偶数列的li标签 */
+        .container ul li:nth-child(2n) a img  {
+                height: 250px;
+        }
+         /* 2n-1 表示奇数列的li标签 */
+        .container ul li:nth-child(2n-1) a img {
+               height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/1.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一世的繁华</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/2.jpg" alt="">
+                        <p>一支素笔，一杯花茶，安然一场盛世的繁华</p>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/3.jpg" alt="">
+                        <p>一支素笔，一盛世的繁华</p>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/4.jpg" alt="">
+                        <p>一支素笔，一然一场盛世的繁华</p>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/5.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅繁华</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/6.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅繁华</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/7.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅繁华</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">
+                        <img src="./images/8.jpg" alt="">
+                        <p>一支素笔，一杯花茶，一段时光，浅繁华</p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!-- ajax -->
+    <script src="./ajaxV0.0.3.js"></script>
+    <script>
+        // 需求：
+            // 1.0 初始化页面 请求数据（读取本地文档）， 把数据储存在客户端
+            // 2.0 判断 当前客户端是否存在图文列表数据 
+            // 如果存在，那就不需要请求数据（读取本地文档）
+            // 如果不存，那就需要请求数据（读取本地文档）
+            // 3.0 瀑布流布局（JS逻辑）
+
+        // 步骤
+        // 1.0.1 检查当前客户端，是否有储存的数据  waterfall
+        var local_data_str =  localStorage.getItem('waterfall_data');
+        // 1.0.2 判断 当前客户端是否存在图文列表数据 
+        if(local_data_str){
+            // 存在本地缓存的数据
+            // console.log(local_data_str) //字符串
+            // 把字符串转成对象
+            var data = JSON.parse(local_data_str);
+            // console.log(data);
+        }else {
+            // 不存在本地缓存的数据
+            $.ajax({
+                url:"./data.json",
+                type:"get",
+                success:function(res){
+                    // console.log(res);// json对象
+                    // 设置缓存的图文列表数据
+                    // 把对象转成字符串
+                    var dataStr = JSON.stringify(res); 
+                    localStorage.setItem("waterfall_data",dataStr);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+
+
+        // 编写一个瀑布流布局函数
+        function waterfal(){
+            // 获取相关元素
+            var ul = document.querySelector(".container ul");
+            var items = document.querySelectorAll(".container ul li");
+            // 定义变量 记录相关参数
+            var column = 5;
+            //获取ul标签宽度
+            var width = ul.offsetWidth;
+            //每一个li标签的宽度
+            var w =  items[0].offsetWidth;
+            // 列与列之间的间距
+            var  space  = (width - column * w )/(column-1);
+            console.log({space})
+            // 定义变量接收所有li标签的高度 数组
+            var arrHeight = [];
+            // 循环 
+            for(var i = 0 ; i < items.length ; i++ ){
+                // 获取每一个li标签的高度
+                var h = items[i].offsetHeight;
+                // 每5个li标签的高度为一行(组)
+                if(i < 5 ){
+                    // 记录前面li标签的高度
+                    arrHeight.push(h);
+                    // 设置第一行每个li标签的位置 
+                    items[i].style.top = "0px";
+                    // 第一行li标签只需要设置他们left属性就可以
+                    items[i].style.left = i * (w + space)+"px";
+                }else {
+                    // 找出数组中最小值 假设数组的第一个数据值最小
+                    var min = arrHeight[0];
+                    // 值最小的数据索引值
+                    var minIndex = 0;
+                    // 循环数组
+                    for(var j = 1 ; j < arrHeight.length ; j ++){
+                        // 判断 假设值如果比数组中其他数据大 
+                        // 说明假设值不是最小的
+                        if( min > arrHeight[j] ){
+                            // 把最小值赋给假设的变量
+                            min = arrHeight[j];
+                            // 找出值最小的位置
+                            minIndex = j ;
+                        }
+                    }
+                    // 更新数组的数据
+                    arrHeight[minIndex]+= h + space;
+                    // console.log({min , minIndex})
+                    // 设置第一行每个li标签的top属性 
+                    items[i].style.top = min + space +"px";
+                    // 第一行li标签只需要设置他们left属性就可以
+                    items[i].style.left = minIndex * (w + space)+"px";
+                }
+            }
+
+            console.log(arrHeight)
+        }
+        waterfal();
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

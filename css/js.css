@@ -1,0 +1,49 @@
+
+.albums-tab{
+    width: 300px;
+    height:800px;
+    position: relative;
+    margin: 350px auto;
+}
+.albums-imgs{
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+.albums-tab .sim-anim-2 a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.sim-anim-2 a {
+    position: absolute;
+    transition: all 0.5s;
+    
+}
+
+.sim-anim-2 a img {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.albums-tab:hover a.ma:nth-child(1) {
+    transform: translate(-35%, -75%) rotate(-40deg);
+}
+
+.albums-tab:hover a.ma:nth-child(2) {
+    transform: translate(-30%, -60%) rotate(-30deg);
+}
+
+.albums-tab:hover a.ma:nth-child(3) {
+    transform: translate(-20%, -40%) rotate(-20deg);
+}
+
+.albums-tab:hover a.ma:nth-child(4) {
+    transform: translate(-10%, -20%) rotate(-10deg);
+}
+
+.albums-tab:hover a.ma:nth-child(5) {
+    transform: scale(1.1) rotate(-5deg);
+}

@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0de790"],{8695:function(n,e,t){"use strict";t.r(e);var a=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",{staticClass:"bound"},[n._v(" 书列表 ")])},s=[],c={},u=c,i=t("2877"),l=Object(i["a"])(u,a,s,!1,null,"5ab1a196",null);e["default"]=l.exports}}]);
+//# sourceMappingURL=chunk-2d0de790.390529fa.js.map

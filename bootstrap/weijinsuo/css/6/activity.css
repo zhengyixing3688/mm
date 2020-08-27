@@ -1,0 +1,146 @@
+.wjs_activity {
+    padding: 50px 0;
+    background-color: #f0f0f0;
+}
+
+/* bootstrap.css  修改导航组件样式 start */
+.wjs_activity .nav-tabs > li.active > a, 
+.wjs_activity .nav-tabs > li.active > a:hover,
+.wjs_activity .nav-tabs > li.active > a:focus {
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 3px solid red;
+}
+.wjs_activity .nav-tabs > li > a {
+    color: #666;
+}
+
+.wjs_activity  .nav > li > a:hover,
+.wjs_activity  .nav > li > a:focus {
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 3px solid red;
+}
+
+/* bootstrap.css  修改导航组件样式  end */
+.wjs_activity .row > div a {
+    margin-top: 15px;
+    margin-left: 15px;
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    /* border: 1px solid #ccc; */
+    background-color: #fff;
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    /* overflow: hidden; */
+}
+.wjs_activity .row > div a.exp {
+    background-color: red;
+    color: #fff;
+    position: relative;
+}
+/* 设置高亮背景的名片的图标 */
+.wjs_activity .row > div a.exp::after {
+    content: "\e915";
+    font-family: weijinsuo;
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: -7px;
+}
+.wjs_activity .row > div a .left {
+    overflow: hidden;
+    min-height: 150px;
+    /* background-color: green; */
+    border-right: 1px dashed #ccc;
+}
+.wjs_activity .row > div a .right::before ,
+.wjs_activity .row > div a .right::after {
+    content:"";
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    position: absolute;
+    left: -6px;
+    z-index: 10000;
+}
+.wjs_activity .row > div a .right::before {
+    top: -6px;
+    /* 阴影：1.水平偏移 2. 垂直偏移（负数 往上） 3.模糊度  4.延伸量 5.阴影颜色 6.内阴影 */
+    box-shadow: 0 -1px 1px 0px #ccc inset ;
+}
+.wjs_activity .row > div a .right::after {
+    bottom: -6px;
+    box-shadow: 0 1px 1px #ccc inset;
+}
+.wjs_activity .row > div a .right {
+    width: 108px;
+    min-height: 150px;
+    /* background-color: blue; */
+    float: right;
+    position: relative;
+}
+.wjs_activity .left  h3 {
+    text-align: center;
+    font-size: 16px;
+}
+.wjs_activity .left  p {
+    height: 15px;
+    line-height: 15px;
+    overflow: hidden;
+}
+.wjs_activity a.exp .right {
+    color: #fff;
+}
+.wjs_activity .right .num {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 25px;
+}
+.wjs_activity a.exp .right .num  {
+    color: #fff;
+}
+.wjs_activity a.exp .right .txt  {
+    color: #fff;
+}
+.wjs_activity .right .txt {
+    text-align: center;
+    color: red;
+}
+.wjs_activity .right .num {
+    color: red;
+    text-align: center;
+}
+.wjs_activity .right .num span {
+    font-size: 50px;
+}
+.wjs_activity .progress {
+    height: 8px;
+}
+.wjs_activity .word {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 108px;
+    text-align: center;
+}
+.wjs_activity .word .guangzhou , 
+.wjs_activity .word .weijinsuo {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+.wjs_activity .word .guangzhou {
+    border: 1px solid red;
+    color: red;
+}
+.wjs_activity .word .weijinsuo {
+    border: 1px solid green;
+    color: green;
+}

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>test-1</title>
+	<style>
+		html,
+		body,
+		ul,
+		p {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			background-color: #333;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		.map {
+			width: 450px;
+			height: 450px;
+			margin: 50px auto;
+			position: relative;
+		}
+
+		.map ul {
+			width: 450px;
+			height: 450px;
+			background-color: #ccc;
+		}
+
+		.map ul li {
+			width: 126px;
+			height: 126px;
+			padding: 10px;
+			border: 2px solid #333;
+			position: absolute;
+		}
+
+		.map ul li:nth-child(1) {
+			left: 0px;
+			top: 0px;
+		}
+
+		.map ul li:nth-child(2) {
+			left: 150px;
+			top: 0px;
+		}
+
+		.map ul li:nth-child(3) {
+			left: 300px;
+			top: 0px;
+		}
+
+		.map ul li:nth-child(4) {
+			left: 300px;
+			top: 150px;
+		}
+
+		.map ul li:nth-child(5) {
+			left: 300px;
+			top: 300px;
+		}
+
+		.map ul li:nth-child(6) {
+			left: 150px;
+			top: 300px;
+		}
+
+		.map ul li:nth-child(7) {
+			left: 0px;
+			top: 300px;
+		}
+
+		.map ul li:nth-child(8) {
+			left: 0;
+			top: 150px;
+		}
+
+		.map ul li:nth-child(9) {
+			left: 150px;
+			top: 150px;
+		}
+
+		.map ul li a {
+			width: 126px;
+			display: block;
+			color: #333;
+			text-decoration: none;
+			text-align: center;
+		}
+
+		.map ul li a p {
+			font-size: 12px;
+		}
+
+		.map ul li button {
+			width: 126px;
+			height: 126px;
+			cursor: pointer;
+			border-radius: 50%;
+			outline: none;
+			border: 0;
+		}
+
+		.txt {
+			display: none;
+			font-size: 30px;
+		}
+
+		.map .active {
+			width: 146px;
+			height: 146px;
+			border: 2px solid orange;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1000;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="map">
+			<div class="active"></div>
+			<ul>
+				<li>
+					<a href="">
+						<img src="./images/lottery_01.png" alt="">
+						<p>京东卡</p>
+						<p>10元</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="./images/lottery_02.png" alt="">
+						<p>京东卡</p>
+						<p>20元</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="./images/lottery_03.png" alt="">
+						<p>京东卡</p>
+						<p>30元</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="./images/lottery_04.png" alt="">
+						<p>京东卡</p>
+						<p>100元</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="./images/lottery_05.png" alt="">
+						<p>谢谢参与</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="./images/lottery_06.png" alt="">
+						<p>京东卡</p>
+						<p>200元</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="./images/lottery_07.png" alt="">
+						<p>京东卡</p>
+						<p>500元</p>
+					</a>
+				</li>
+
+				<li>
+					<a href="">
+						<img src="./images/lottery_08.png" alt="">
+						<p>iQOO Pro</p>
+						<p>手机</p>
+					</a>
+				</li>
+				<li>
+					<button id="start_btn">抽奖</button>
+					<button class="txt" id="start_text">0</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>
+<script>
+	// 需求：
+	//  定义一个Page构造函数 （2分）
+	//  在构造函数里添加程序所需要属性   （10分）
+	//  高亮的边框至少绕着按钮转3圈（10分）
+	//  在原型对象上添加产生指定范围的随机数（3分）
+	//  点击"抽奖按钮" ， 开始执行随机抽奖，高亮的边框，依次在奖品上移动（10分）
+	//  点击"抽奖按钮" ， 隐藏"抽奖按钮"，显示另一个.txt标签，用于记录转了多少圈（5分）
+	//  抽奖结束，提示中奖结果，显示"抽奖按钮" ，隐藏.txt标签（5分）
+	function Page(option) {
+		this.items = option.items;
+		this.active = option.active;
+		this.start_btn = option.start_btn;
+		this.start_text = option.start_text;
+		this.timer = null;
+		this.arr1 = [];
+		this.arr2 = [];
+		this.index = 0;
+		this.key = 0;
+	}
+	Page.prototype.random = function (min, max) {
+		return Math.floor(Math.random() * (max - min) + min);
+	}
+	Page.prototype.init = function () {
+		var _this = this;
+		this.start_btn.onclick = function () {
+			_this.hide(this);
+			_this.show(_this.start_text);
+			_this.key = 0;
+			_this.start_text.innerHTML = _this.key;
+			_this.autoPlay();
+		}
+	}
+	Page.prototype.autoPlay = function () {
+		var _this = this;
+		for (var i = 0; i < this.items.length - 1; i++) {
+		var left = this.items[i].offsetLeft;
+		var ttop = this.items[i].offsetTop;
+		this.arr1.push(left);
+		this.arr2.push(ttop);
+		clearInterval(this.timer);
+		this.timer = setInterval(function(){
+			_this.index ++ ;
+			if (_this.index > _this.arr1.length - 1) {
+				_this.index = 0;
+				if (_this.index == "0") {
+					_this.key ++ ;
+					_this.start_text.innerHTML = _this.key;
+					if (_this.key >= _this.random(3,10)) {
+						_this.index = _this.random(0,8);
+						clearInterval(_this.timer)
+						_this.hide(_this.start_text);				
+						_this.show(_this.start_btn);
+						var p1 = _this.items[_this.index].getElementsByTagName("p")[0].innerHTML;
+						if (_this.index == "4") {
+							// alert(p1)
+							console.log(p1);	
+						}else{
+							var p2 = _this.items[_this.index].getElementsByTagName("p")[1].innerHTML;
+							// alert("恭喜你获得："+p1+p2)
+							console.log("恭喜你获得：",p1,p2);
+						}
+					}
+				}
+			}
+			_this.animate(_this.active , {left:_this.arr1[_this.index],top:_this.arr2[_this.index]})
+		},200);	
+	}
+	}
+	Page.prototype.show = function (dom) {
+		dom.style.display = "block";
+	}
+	Page.prototype.hide = function (dom) {
+		dom.style.display = "none";
+	}
+	Page.prototype.animate = function (dom, option) {
+		clearInterval(dom.timer)
+		dom.timer = setInterval(function () {
+			var bool = true;
+			for (var key in option) {
+				var target = parseInt(option[key]);
+				var current = parseInt(getComputedStyle(dom, null)[key]);
+				var speed = (target - current) / 5;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				if (target != current) {
+					bool = false;
+				}
+				dom.style[key] = current + speed + "px";
+			}
+			if (bool) {
+				clearInterval(dom.timer);
+				return;
+			}
+		}, 30)
+	}
+	var start = new Page({
+		items: document.getElementsByTagName("li"),
+		active: document.getElementsByClassName("active")[0],
+		start_btn: document.getElementById("start_btn"),
+		start_text: document.getElementById("start_text")
+	});
+	start.init();
+</script>

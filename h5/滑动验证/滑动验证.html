@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stage {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .stage .pic {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .stage .pic 
+        .stage canvas#main {
+            outline: 1px solid red;
+        }
+
+        .stage canvas#piece {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9;
+        }
+
+        .sliderContainer {
+            text-align: center;
+            border: 1px solid gray;
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .sliderContainer .sliderMask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: lightblue;
+        }
+
+        .sliderContainer.error .sliderContainer {
+            outline: 1px solid red;
+        }
+
+        .sliderContainer .sliderMask .slider {
+            position: relative;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: white;
+            transition: background 0.3s;
+            outline: 1px solid gray;
+        }
+
+        .sliderContainer .sliderMask .slider:hover {
+            background: red;
+        }
+
+        .sliderContainer .sliderMask .slider:hover .sliderIcon {
+            background-position-y: -13px;
+        }
+
+        .sliderContainer .sliderMask .slider .sliderIcon {
+            width: 14px;
+            height: 10px;
+            display: block;
+            background: url('icon_light.f13cff3.png') 0 -26px;
+            position: relative;
+            top: 15px;
+            left: 13px;
+        }
+
+        .refreshIcon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: url('./icon_light.f13cff3.png') 0 -409px;
+            background-size: 16px;
+            z-index: 99;
+            height: 15px;
+            width: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="pic">
+            <canvas id="main" width="300" height="150"></canvas>
+            <canvas id="piece" width="300" height="150"></canvas>
+            <div class="refreshIcon "></div>
+        </div>
+        <div class="sliderContainer error">
+            <div class="sliderMask" style="width: 40px;">
+                <div class="slider" style="left: 0px;">
+                    <span class="sliderIcon"></span>
+                </div>
+            </div>
+            <span class="sliderText">向右滑动滑块填充拼图</span>
+        </div>
+        <img id="source" style="display: none;" src="./img/loop1.jpg" alt="" />
+        <!-- <img id="source" style="display: none;" src="https://i.picsum.photos/id/30/300/150.jpg" alt="" /> -->
+    </div>
+    <script>
+        /** @type {HTMLCanvasElement} */
+        var userInput = 0;
+        var sliderContainer = document.querySelector('.sliderContainer');
+        var sliderMask = document.querySelector('.sliderMask');
+        var slider = document.querySelector('.slider');
+        var piece = document.getElementById('piece');
+        var main = document.getElementById('main');
+
+        var source = document.querySelector('#source');
+        slider.onmousedown = function (e) {
+            if (e.which !== 1) {
+                return;
+            }
+            sliderContainer.onmousemove = function (eve) {
+                var x = eve.pageX - this.offsetLeft - e.offsetX;
+
+                if (x > 300 - 40 || x < 0) {
+                    return;
+                }
+                userInput = x;
+
+                slider.style.left = x + 'px';
+                sliderMask.style.width = x + 40 + 'px';
+                piece.style.left = userInput + 'px';
+            }
+        }
+        function generateRandomNum(m, n) {
+            return Math.floor(Math.random() * (n - m)) + m;
+        }
+        var Random;
+
+        function drawMain() {
+
+            Random = generateRandomNum(50, 250);
+
+            var context = main.getContext('2d');
+            context.drawImage(source, 0, 0)
+            context.beginPath();
+            context.moveTo(Random, 75 - 25);
+            context.lineTo(Random - 25, 75 + 25);
+            context.lineTo(Random + 25, 75 + 25);
+            context.closePath();
+
+            context.fillStyle = 'white';
+            context.fill();
+
+
+        }
+       
+        // drawMain();
+        function drawPiece() {
+            var context = piece.getContext('2d');
+
+            context.clearRect(0, 0, 300, 150);
+            context.beginPath();
+            context.moveTo(25, 75 - 25);
+            context.lineTo(0, 75 + 25);
+            context.lineTo(25 + 25, 75 + 25);
+            context.closePath();
+
+            context.clip();
+            context.drawImage(source, Random - 25, 50, 50, 50, 0, 50, 50, 50);
+
+        }
+        source.onload = function() {
+                init();
+        };
+        function init() {
+            drawMain();
+            drawPiece();
+
+            slider.style.left = 0 + 'px';
+            sliderMask.style.width = 0 + 40 + 'px';
+
+            piece.style.left = 0 + 'px';
+            userInput = 0;
+        }
+        function check() {
+            sliderContainer.onmousemove = null;
+            if (Math.abs(userInput - (Random - 25)) < 5) {
+                alert('验证成功');
+            } else {
+                source.src = "https://i.picsum.photos/id/" + generateRandomNum(10, 100) + "/300/150.jpg";
+                init();
+            }
+        }
+        slider.onmouseup = check;
+        document.querySelector(".refreshIcon").onclick = function () {
+            source.src = "https://i.picsum.photos/id/" + generateRandomNum(10, 100) + "/300/150.jpg";
+            init();
+        };
+    </script>
+</body>
+
+</html>

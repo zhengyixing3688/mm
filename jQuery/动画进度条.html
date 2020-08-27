@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+        <style>
+            body {
+                background: #0d0d0d;
+            }
+            .stage {
+                width: 200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            h1 {
+                font-weight: lighter;
+                font-size: 36px;
+                margin: 0;
+                color: #f60d54;
+            }
+            p {
+                color: white;
+                font-size: 48px;
+                font-weight: bold;
+                margin: 0;
+            }
+            .progress {
+                height: 1px;
+                width: 0;
+                background: #f60d54;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="stage">
+            <h1>loading</h1>
+            <p>0%</p>
+            <div class="progress"></div>
+        </div>
+        <script>
+            var init = 0;
+            var max = 100;
+            var id = setInterval(function() {
+                init += 0.5;
+                if (init >= 100) {
+                    clearInterval(id);
+                }
+                console.log(init);
+
+                $(".stage p").text(parseInt(init) + "%");
+                $(".stage .progress").css("width", init + "%");
+            }, 20);
+            // 动画 每一秒多少帧合适
+            // 电影 24帧每秒 41.67毫秒一帧
+            // 显示器刷新率 60帧（锁帧） 刷新率 16.67毫秒提供一帧
+        </script>
+    </body>
+</html>

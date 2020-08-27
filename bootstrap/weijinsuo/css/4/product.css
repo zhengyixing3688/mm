@@ -1,0 +1,36 @@
+.wjs_product {
+    width: 100%;
+}
+.wjs_product ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.wjs_product .row > li a {
+    display: block;
+    padding: 30px 20px;
+}
+.wjs_product .row > li a ,
+.wjs_product .row > li a:hover ,
+.wjs_product .row > li a:focus {
+    color:#333;
+    text-decoration: none;
+}
+.wjs_product .row > li a span.icon {
+    font-size: 40px;
+}
+.wjs_product .row > li a:hover {
+    color:red;
+}
+/* 大屏幕 */
+@media (min-width: 1200px){
+    .wjs_product .container {
+        width: 970px;
+    }
+}
+/* 中等屏幕 */
+@media (max-width:1199px) and (min-width:992px) {
+    .wjs_product .container {
+        width: 970px;
+    }
+}

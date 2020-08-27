@@ -1,0 +1,179 @@
+/* 效果一 */
+.sim-anim-1 img{
+    position: absolute;
+    transition: all 0.5s;
+}
+.sim-anim-1:hover img{
+    z-index: 1;
+}
+
+.sim-anim-1:hover img:nth-child(1){
+    transform: rotate(10deg);
+}
+.sim-anim-1:hover img:nth-child(2){
+    transform: rotate(20deg);
+}
+.sim-anim-1:hover img:nth-child(3){
+    transform: rotate(30deg);
+}
+.sim-anim-1:hover img:nth-child(4){
+    transform: rotate(-10deg);
+}
+.sim-anim-1:hover img:nth-child(5){
+    transform: rotate(-20deg);
+}
+.sim-anim-1:hover img:nth-child(6){
+    transform: rotate(-30deg);
+}
+.sim-anim-1:hover img:nth-child(7){
+    transform: scale(0.9);
+}
+
+.sim-anim-2 img{
+    position: absolute;
+    transition: all 0.5s;
+}
+
+.sim-anim-2 img{
+    z-index: 1;
+}
+
+.sim-anim-2:hover img:nth-child(1){
+    transform: translate(-40%,-80%) rotate(-40deg);
+}
+.sim-anim-2:hover img:nth-child(2){
+    transform: translate(-30%,-60%) rotate(-30deg);
+}
+.sim-anim-2:hover img:nth-child(3){
+    transform: translate(-20%,-40%) rotate(-20deg);
+}
+.sim-anim-2:hover img:nth-child(4){
+    transform: translate(-10%,-20%) rotate(-10deg);
+}
+.sim-anim-2:hover img:nth-child(5){
+    transform: scale(1.1) rotate(-5deg);
+}
+
+
+
+.sim-anim-3 img{
+    position: absolute;
+    transition: all 0.5s;
+}
+
+.sim-anim-3 img{
+    z-index: 1;
+}
+
+.sim-anim-3:hover img:nth-child(1){
+    transform: translate(40%,-80%) rotate(40deg);
+}
+.sim-anim-3:hover img:nth-child(2){
+    transform: translate(30%,-60%) rotate(30deg);
+}
+.sim-anim-3:hover img:nth-child(3){
+    transform: translate(20%,-40%) rotate(20deg);
+}
+.sim-anim-3:hover img:nth-child(4){
+    transform: translate(10%,-20%) rotate(10deg);
+}
+
+.sim-anim-3:hover img:nth-child(5){
+    transform: translate(40%,80%) rotate(-40deg);
+}
+.sim-anim-3:hover img:nth-child(6){
+    transform: translate(30%,60%) rotate(-30deg);
+}
+.sim-anim-3:hover img:nth-child(7){
+    transform: translate(20%,40%) rotate(-20deg);
+}
+.sim-anim-3:hover img:nth-child(8){
+    transform: translate(10%,20%) rotate(-10deg);
+}
+.sim-anim-3:hover img:nth-child(9){
+    transform: scale(1.1);
+}
+
+
+.sim-anim-4 img{
+    position: absolute;
+    transition: all 0.5s;
+}
+.sim-anim-4:hover img{
+    z-index: 1;
+}
+
+.sim-anim-4:hover img:nth-child(1){
+    transform: translate(-80%,-160%) rotate(-80deg) scale(0.3);
+}
+.sim-anim-4:hover img:nth-child(2){
+    transform: translate(-70%,-140%)  rotate(-70deg) scale(0.4);
+}
+.sim-anim-4:hover img:nth-child(3){
+    transform: translate(-60%,-120%)  rotate(-60deg) scale(0.5);
+}
+.sim-anim-4:hover img:nth-child(4){
+    transform: translate(-50%,-100%)  rotate(-50deg) scale(0.6);
+}
+.sim-anim-4:hover img:nth-child(5){
+    transform: translate(-40%,-80%)  rotate(-40deg) scale(0.7);
+}
+.sim-anim-4:hover img:nth-child(6){
+    transform: translate(-30%,-60%)  rotate(-30deg) scale(0.8);
+}
+.sim-anim-4:hover img:nth-child(7){
+    transform: translate(-20%,-40%)  rotate(-20deg) scale(0.9);
+}
+.sim-anim-4:hover img:nth-child(8){
+    transform: translate(-10%,-20%)  rotate(-10deg) scale(1);
+}
+.sim-anim-4:hover img:nth-child(9){
+    transform: scale(1.1);
+}
+.sim-anim-9{
+    position: relative;
+    perspective: 500px;
+}
+.sim-anim-9:hover img{
+    position: absolute;
+    transition: all 0.5s;
+}
+
+.sim-anim-9:hover img:nth-child(1){
+    transform: translate(0,75%)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(2){
+    transform: translate(75%,75%)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(3){
+    transform: translate(75%,0)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(4){
+    transform: translate(75%,-75%)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(5){
+    transform: translate(0,-75%)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(6){
+    transform: translate(-75%,-75%)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(7){
+    transform: translate(-75%,0)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(8){
+    transform: translate(-75%,75%)  scale(0.7) rotateX(10deg);
+}
+.sim-anim-9:hover img:nth-child(9){
+    transform: scale(0.7) rotateX(10deg);
+}
+
+
+
+
+
+
+
+
+
+
+

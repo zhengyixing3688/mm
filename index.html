@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styleH5.css">
+    <link rel="stylesheet" href="./css/js.css">
+    <link rel="stylesheet" href="./css/jq.css">
+</head>
+<style>
+    body,
+    ul {
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    .box {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+
+    }
+
+    ul {
+        position: relative;
+        transition: all 1s ease;
+        top: 0;
+    }
+
+    li {
+        width: 100%;
+        height: 100vh;
+        font-size: 30px;
+        position: relative;
+        display: flex;
+        /* justify-content: center; */
+        text-align: center;
+        /* align-items: center; */
+    }
+
+    ul li:nth-child(1) {
+        background-repeat: no-repeat;
+        flex-wrap: wrap;
+        background-image: url(./img/back/1.jpg);
+    }
+
+    ul li:nth-child(2) {
+        background-repeat: no-repeat;
+        background-image: url(./img/back/2.jpg);
+    }
+
+    ul li:nth-child(3) {
+        background-repeat: no-repeat;
+        background-image: url(./img/back/3.jpg);
+    }
+
+    ul li:nth-child(4) {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(./img/back/4.jpg);
+    }
+
+    ul li:nth-child(5) {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(./img/back/5.jpg);
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        height: 100px;
+        width: 100%;
+        z-index: 999;
+        text-align: center;
+        color: #fff;
+    }
+
+    .nav span {
+        display: inline-block;
+        margin: 10px;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .nav span.active::before {
+        box-shadow: 0 0 18px 4px rgb(245, 217, 165);
+        content: "";
+        display: block;
+        transform: translateY(12px);
+    }
+
+    ul li div {
+        width: 100%;
+    }
+
+    ul li div a {
+        text-decoration: none;
+        font-size: 18px;
+        color: #fff;
+        display: inline-block;
+        /* margin: 10px;
+        padding: 5px 10px; */
+        border-radius: 20px;
+        transition: all 0.5s;
+        font-weight: bold;
+    }
+
+    ul li div a:hover::after {
+        /* box-shadow: 0 0 18px 4px rgb(245, 217, 165); */
+        content: "";
+        display: block;
+        transform: translateY(-12px);
+    }
+
+    /* h1{
+        flex-wrap: wrap;
+    } */
+    ul li div a:hover {
+        font-size: 22px;
+        color: rgb(192, 188, 188);
+    }
+
+    ul li.litop div.div {
+        width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    ul li.litop .div_left {
+        margin: 0 auto;
+        width: 300px;
+        /* margin-top: 270px; */
+        padding: 0 10px;
+    }
+
+    ul li.litop .div_right {
+        margin: 0 auto;
+        width: 380px;
+        padding: 0 10px;
+    }
+
+
+    ul .boots .div-boots {
+        width: 990px;
+        height: 100%;
+        margin: 0 auto;
+        margin-top: 60px;
+    }
+
+    ul .boots .div-boots .div-b {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        margin-top: 15px;
+    }
+
+    ul .boots .div-boots .div-b .a-boot {
+        display: block;
+        height: 400px;
+        width: 350px;
+        background-image: url(./img/st.png);
+    }
+
+    ul .boots .div-boots .div-b .a-boot:hover {
+        transform: scale(1.1);
+    }
+
+    ul .boots .div-boots .div-b .b-boot:hover {
+        transform: scale(1.1);
+    }
+
+    ul .boots .div-boots .div-b .c-boot:hover {
+        transform: scale(1.1);
+    }
+
+    ul .boots .div-boots .div-b .b-boot {
+        display: block;
+        height: 400px;
+        width: 350px;
+        margin-left: 40px;
+        background-image: url(./img/wjs.png);
+    }
+
+    ul .boots .div-boots .div-b .c-boot {
+        display: block;
+        height: 400px;
+        width: 350px;
+        margin-top: -112px;
+        margin-left: 40px;
+        background-image: url(./img/models.png);
+    }
+
+    ul li.h-css {
+        flex-direction: column;
+    }
+
+    ul li.h-css .conts {
+        width: 990px;
+        margin: 0 auto;
+        /* display: flex; */
+        margin-top: 100px;
+    }
+
+    ul li.h-css .conts .h-c1 {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    ul li.h-css .conts .h-c2 {
+        width: 400px;
+
+    }
+
+
+    ul li .xmu-cont {
+        width: 1000px;
+        height: 100%;
+        margin: 0 auto;
+        margin-top: 60px;
+    }
+
+    ul li .xmu-cont .xmu-list {
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    ul li .xmu-cont .xmu-list .xmu {
+        height: 400px;
+        width: 300px;
+        margin-right: 40px;
+        /* background-color: blanchedalmond; */
+        transition: all 2s;
+        background-size: 100% 100%;
+    }
+
+
+    ul li .xmu-cont .xmu-list .xmu .xmu-item1 {
+        height: 100%;
+        width: 100%;
+        display: block;
+        background-image: url(./img/w.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        box-shadow: 0 0 18px 4px transparent;
+    }
+
+    ul li .xmu-cont .xmu-list .xmu .m:hover {
+        box-shadow: 0 0 0 0 transparent;
+        transform: scale(1.1);
+    }
+
+    ul li .xmu-cont .xmu-list .xmu .xmu-item2 {
+        height: 100%;
+        width: 100%;
+        display: block;
+        background-image: url(./img/cf.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    ul li .xmu-cont .xmu-list .xmu .xmu-item3 {
+        height: 100%;
+        width: 100%;
+        display: block;
+        background-image: url(./img/novel.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    ul li .xmu-cont .xmu-list .xmu .xmu-item4 {
+        height: 100%;
+        width: 100%;
+        display: block;
+        background-image: url(./img/wx.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+    }
+
+    .map {
+        margin-top: 100px;
+    }
+
+    h1 {
+        display: block;
+        width: 100%;
+        /* height: 100px; */
+        font-size: 30px;
+        margin-top: 100px;
+        color: #fff;
+        letter-spacing: 5px;
+        font-weight: normal;
+        /* animation: change 1s infinite; */
+        transform-origin: 100% 0;
+        text-align: center;
+    }
+    .h41{
+        /* margin: -280px auto; */
+        margin-top: -100px;
+    }
+    .imgg {
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .imgg .immgg {
+        height: 300px;
+        width: 300px;
+        background-image:url(./img/tx/1.jpg);
+        background-position: center;
+        background-size: 100%;
+        border-radius: 50%;
+        margin: 0px auto;
+    }
+
+    .div-p {
+        margin: -98px auto;
+    }
+
+    .div-p p.p {
+        /* text-align: center; */
+        display: block;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    @keyframes change {
+        0% {
+            transform: skew(0deg);
+        }
+
+        25% {
+            transform: skew(-10deg);
+        }
+
+        50% {
+            transform: skew(0deg);
+        }
+
+        75% {
+            transform: skew(10deg);
+        }
+
+        100% {
+            transform: skew(0deg);
+        }
+    }
+
+    p {
+        color: rgb(236, 218, 218);
+        font-size: 25px;
+    }
+
+    .clearfix::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+
+    .fl {
+        float: left;
+    }
+
+    .fr {
+        float: right;
+    }
+</style>
+
+<body>
+
+    <div class="box">
+        <div class="nav">
+            <span class="active">主页</span>
+            <span>JavaScript与jQuery小项目</span>
+            <span>Bootstrap</span>
+            <span>css3与html5小项目</span>
+            <span>项目表</span>
+        </div>
+        <ul>
+            <li>
+                <h1>欢迎来到 <strong>ZHENG YI XING</strong> 的 <strong>github</strong> 项目</h1>
+                <div class="imgg">
+                    <div class="immgg"></div>
+                </div>
+                <div class="div-p">
+                    <p class="p">在逆境中，智者知难而进，愚者消沉不前，与其相信依靠别人，不如相信依靠自己，那些看似到不了的未来，都会成为你经历过的云淡风轻！</p>
+                </div>
+
+            </li>
+            <li class="clearfix litop">
+
+                <div class="clearfix div ">
+                    <div class="fl div_left ">
+                        <div class="albums-tab">
+                            <h4 class="h41">JavaScript</h4>
+                            <div class="albums-imgs sim-anim-2">
+                                <a class="ma" href="./JavaScript/面向对象贪吃蛇/index.html"><img src="./img/JS/1.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/瀑布流布局/index.html"> <img src="./img/JS/2.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/拼图/九宫格3.html"> <img src="./img/JS/3.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/发表.html"> <img src="./img/JS/4.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/抽奖/test-1.html"> <img src="./img/JS/5.png" alt=""> </a>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- jq -->
+                    <div class="fr div_right ">
+                        <div class="albums-tab3">
+                            <h4 class="h41">jQuery</h4>
+                            <div class="albums-imgs3 sim-anim-3">
+                                <a class="ma" href="./JavaScript/面向对象贪吃蛇/index.html"><img src="./img/JQ/1.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/瀑布流布局/index.html">    <img src="./img/JQ/2.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/拼图/九宫格3.html">        <img src="./img/JQ/3.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/发表.html">                <img src="./img/JQ/4.png" alt=""> </a>
+                                <a class="ma" href="./JavaScript/抽奖/test-1.html">         <img src="./img/JQ/5.png" alt=""> </a>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+
+            </li>
+            <!--  -->
+            <li class="boots">
+                <div class="div-boots">
+                    <h4>Bootstrap</h4>
+                    <div class="div-b clearfix">
+                        <a href="./bootstrap/sali-trip/index.html" class="a-boot fl"></a>
+                        <a href="./bootstrap/weijinsuo/index.html" class="b-boot fr"></a>
+                        <a href="./bootstrap/models/index.html" class="c-boot"></a>
+                    </div>
+                </div>
+            </li>
+
+            <!--  -->
+            <li class="h-css">
+                <!-- css3 -->
+                <div class="map">
+                    <h4>CSS3</h3>
+                        <ol>
+                            <li class="map1 imf1 mm"><a class="aa1 m1" href="./c3/3D柱状图效果/chart.html"> <img
+                                        src="./img/css3Img/1.png"> </a></li>
+                            <li class="map2 imf2 mm"><a class="aa1 m2" href="./c3/加载图标/css3-svg-canvas.html"> <img
+                                        src="./img/css3Img/2.png"> </a></li>
+                            <li class="map3 imf3 mm"><a class="aa1 m3" href="./c3/幽灵按钮/幽灵按钮3-18.html"> <img
+                                        src="./img/css3Img/3.png"> </a></li>
+                            <li class="map4 imf4 mm"><a class="aa1 m4" href="./c3/3D立体/3d立体.html"> <img
+                                        src="./img/css3Img/4.png"> </a></li>
+                            <li class="map5 imf5 mm"><a class="aa1 m5" href="./c3/3D倾斜视差/index.html"> <img
+                                        src="./img/css3Img/5.png"> </a></li>
+                            <li class="map6 imf6 mm"><a class="aa1 m6" href="./c3/星球旋转/02.模仿宇宙星球旋转.html"><img
+                                        src="./img/css3Img/6.png"> </a></li>
+                            <li class="map7 imf7 mm"><a class="aa1 m7" href="./c3/按钮悬停效果/按钮悬停效果.html"> <img
+                                        src="./img/css3Img/7.png"> </a></li>
+                            <div class="btn">
+                                <span class="bt bt1"><</span>
+                                        <span class="bt bt2">></span>
+                            </div>
+                        </ol>
+                </div>
+                <!-- h5 -->
+                <div class="mapH">
+                    <h4>H5</h3>
+                        <ol>
+                            <li class="mapH1 hh"><a class="hh1 m1" href="./h5/滑动验证/滑动验证.html"> <img
+                                        src="./img/h5Img/1.png"> </a></li>
+                            <li class="mapH2 hh"><a class="hh1 m2" href="./h5/视频播放/index.html"> <img
+                                        src="./img/h5Img/2.png"> </a></li>
+                            <li class="mapH3 hh"><a class="hh1 m3" href="./h5/音乐播放/音乐播放器.html"> <img
+                                        src="./img/h5Img/3.png"> </a></li>
+                            <li class="mapH4 hh"><a class="hh1 m3" href="./h5/电子签名/index.html"> <img
+                                        src="./img/h5Img/4.png"> </a></li>
+                            <li class="mapH5 hh"><a class="hh1 m3" href="./h5/图片展开/图片展开.html"> <img
+                                        src="./img/h5Img/5.png"> </a></li>
+
+                            <div class="btn">
+                                <span class="bt btn1"><</span>
+                                        <span class="bt btn2">></span>
+                            </div>
+                        </ol>
+                </div>
+
+
+            </li>
+
+            <li>
+                <div class="xmu-cont">
+                    <h4>项目表</h4>
+                    <div class="xmu-list clearfix g">
+                        <div class="xmu a fl">
+                            <a class="xmu-item1 m" href="./项目表/weather/index.html"></a>
+                        </div>
+                        <div class="xmu b fl">
+                            <a class="xmu-item2 m" href="./项目表/d1/dist/index.html"></a>
+                        </div>
+                    </div>
+                    <div class="xmu-list clearfix g">
+                        <div class="xmu fl">
+                            <a class="xmu-item3 m" href="./项目表/d2/dist/index.html"></a>
+                        </div>
+                        <div class="xmu fl">
+                            <a class="xmu-item4 m" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        let btn1 = document.getElementsByClassName('bt1')[0]
+        let btn2 = document.getElementsByClassName('bt2')[0]
+        let ul = document.getElementsByTagName('ol')[0]
+        let uli = document.getElementsByClassName('mm')
+        console.log(uli, 'uli')
+        let uliArr = Array.from(uli)
+
+        let arr = {
+            classlist: ['map1', 'map2', 'map3', 'map4', 'map5', 'map6', 'map7'],
+            bool: true
+        }
+        let list = arr.classlist
+        console.log(list, 'list')
+        function move(val) {
+            uliArr.forEach((v, i) => {
+                v.setAttribute('class', val[i])
+            })
+        }
+        btn1.onclick = function () {
+            let popV = list.pop()
+            list.unshift(popV)
+            move(list)
+        }
+        btn2.onclick = function () {
+            let shiV = list.shift()
+            list.push(shiV)
+            move(list)
+        }
+        // ---h5
+        let bon1 = document.getElementsByClassName('btn1')[0]
+        let bon2 = document.getElementsByClassName('btn2')[0]
+        // let ul = document.getElementsByTagName('ol')[0]
+        let oli = document.getElementsByClassName('hh')
+        console.log(oli, 'oli')
+        let oliArr = Array.from(oli)
+
+        let Oarr = {
+            classlist: ['mapH1', 'mapH2', 'mapH3', 'mapH4', 'mapH5'],
+        }
+        let Olist = Oarr.classlist
+        console.log(Olist, 'Olist')
+        function move1(val) {
+            oliArr.forEach((v, i) => {
+                v.setAttribute('class', val[i])
+            })
+        }
+        bon1.onclick = function () {
+            let popV = Olist.pop()
+            Olist.unshift(popV)
+            move1(Olist)
+        }
+        bon2.onclick = function () {
+            let shiV = Olist.shift()
+            Olist.push(shiV)
+            move1(Olist)
+        }
+        // ==
+        var kai = true, i = 0;
+        var oUl = document.getElementsByTagName("ul")[0];
+        var spans = document.querySelectorAll(".box .nav span")
+
+        for (var j = 0; j < spans.length; j++) {
+            spans[j].count = j
+            spans[j].onclick = function () {
+                for (let index = 0; index < spans.length; index++) {
+                    spans[index].classList.remove("active")
+                }
+                this.classList.add("active")
+                i = this.count
+                //oUl.style.transition = " 1s ease";
+                oUl.style.top = -this.count * 100 + 'vh';
+            }
+        }
+
+        document.addEventListener('mousewheel', function (ev) {
+            var ev = window.event || ev;
+            if (kai) {
+                kai = false;
+                //oUl.style.transition = " 1s ease";
+                if (ev.wheelDelta < 0 && i < 6) {
+                    i++;
+                }
+                if (ev.wheelDelta > 0 && i > 0) {
+                    i--;
+                }
+                for (let index = 0; index < spans.length; index++) {
+                    spans[index].classList.remove("active")
+                }
+                spans[i].className = 'active'
+                oUl.style.top = -i * 100 + 'vh';
+
+                setTimeout(function () {
+                    kai = true;
+                }, 500);
+
+            }
+        });
+
+        window.onresize = function () {
+            oUl.style.transition = "none";
+        }
+    </script>
+</body>
+
+</html>

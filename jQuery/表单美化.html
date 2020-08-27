@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>作业一(2).html</title>
+	<meta name="keywords" content="your keywords">
+	<meta name="description" content="your description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<!--[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]--><!--[if IE 9]>
+	<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/base64.min.js"></script>
+	<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/typedarray.min.js"></script>
+	<![endif]-->
+	<script src="../jquery/jquery.min.js"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		.wra{
+			height: 300px;
+			width: 800px;
+			background-color: #ccc;
+			margin: 0 auto;
+		}
+		.wra .wra_her{
+			overflow: hidden;
+		}
+		.wra .wra_her .dj{
+			font-size: 10px;
+			margin-top: 30px;
+			margin-left: 40px;
+		}
+		.wra .wra_her .radio{
+			height: 30px;
+			width: 300px;
+			/*border:1px solid red;*/
+			margin-left: 40px;
+		}
+		.wra .wra_her .radio span{
+			display: block;
+			font-size: 10px;
+			height: 20px;
+			/*text-align: center;*/
+			margin-top: 8px;
+			width: 40px;
+			float: left;
+			margin-left: 2px;
+		}
+		.wra .wra_her .radio .rad_1{
+			height: 14px;
+			width: 14px;
+			background-color: white;
+			border-radius: 50%;
+			float: left;
+			margin-top: 8px;
+			cursor: pointer;
+		}
+		.wra .wra_her .radio .rad_1 div.qd {
+			height: 13px;
+			width: 13px;
+			border-radius: 50%;
+			border:1px solid red;
+			position: relative;
+		}
+		.wra .wra_her .radio .rad_1 div.qd i{
+			height: 5px;
+			width: 5px;
+			background-color: red;
+			border-radius: 50%;
+			display: inline-block;
+			position: absolute;
+			top: 4px;
+			left: 4px;
+		}
+		.wra .wra_her .radio .rad_1 div.qd{
+			display: none;
+		}
+		.wra .wra_her .radio .rad_1 div.block_rad{
+			display:block;
+		}
+		/*======================*/
+		.wra .wra_con .dx_1{
+			font-size: 10px;
+			margin-top: 30px;
+			margin-left: 40px;
+		}
+		.wra .wra_con .check{
+			height: 30px;
+			width: 500px;
+			/*border:1px solid red;*/
+			margin-left: 40px;
+		}
+		.wra .wra_con .check span{
+			display: block;
+			font-size: 10px;
+			height: 20px;
+
+			/*text-align: center;*/
+			margin-top: 8px;
+			width: 60px;
+			float: left;
+			margin-left: 2px;
+		}
+
+		.wra .wra_con .check .che_1{
+			height: 15px;
+			width: 15px;
+			background-color: white;
+			float: left;
+			margin-top: 8px;
+			cursor: pointer;
+		}
+		.wra .wra_con .check .che_1 div.dx {
+			height: 13px;
+			width: 13px;
+			border:1px solid red;
+			position: relative;
+		}
+		.wra .wra_con .check .che_1 div.dx i{
+			height: 8px;
+			width: 5px;
+			border-top: 1px solid transparent;
+			border-bottom: 1px solid red;
+			border-left: 1px solid transparent;
+			border-right: 1px solid red;
+			
+			transform: rotate(33deg);
+			display: inline-block;
+
+			position: absolute;
+			top: 0px;
+			left:3px;
+		}
+		.wra .wra_con .check .che_1 div.dx {
+			display: none;
+		}
+		.wra .wra_con .check .che_1 div.block_che{
+			display:block;
+		}
+		.clearfix::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="wra">
+		<div class="wra_her">
+			<div class="dj">单选按钮美化：</div>
+			<div class="radio">
+				<span>性别：</span>
+				<div class="rad_1">
+					<div class="qd block_rad"><i></i></div>
+				</div>
+				<span>男</span>
+				<div class="rad_1">
+					<div class="qd"><i></i></div>
+				</div>
+				<span>女</span>
+				<div class="rad_1">
+					<div class="qd"><i></i></div>
+				</div>
+				<span>保密</span>
+			</div>
+		</div>
+		<div class="wra_con">
+			<div class="dx_1">多选按框美化</div>
+			<div class="check clearfix">
+				<span class="s">兴趣爱好：</span>
+				<div class="che_1">
+					<div class="dx block_che"><i></i></div>
+				</div>
+				<span>交友聊天</span>
+				<div class="che_1">
+					<div class="dx"><i></i></div>
+				</div>
+				<span>网络游戏</span>
+				<div class="che_1">
+					<div class="dx"><i></i></div>
+				</div>
+				<span>程序编码</span>
+				<div class="che_1">
+					<div class="dx"><i></i></div>
+				</div>
+				<span>网上购物</span>
+			</div>
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			// $('.wra_her .radio div.rad_1 .qd').removeClass('block_rad').eq(0).addClass('block_rad')
+			$('.wra_her .radio .rad_1').click(function(){
+				$(this).find('div').addClass('block_rad').end().siblings('div').find('div').removeClass('block_rad')
+				console.log($(this).find('div').addClass('block_rad').end());
+			})
+			$('.wra_con .check .che_1').click(function(){
+				$(this).find('div').toggleClass('block_che')
+				// console.log($(this).siblings('div').find('div'))
+			})
+		})
+	</script>
+	
+</body>
+</html>

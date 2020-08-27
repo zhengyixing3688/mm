@@ -1,0 +1,94 @@
+.wjs_news {
+    padding: 50px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.wjs_news .container > .row > div h3 {
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    color: #666;
+}
+.wjs_news .container > .row > div h3::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    right: -8px;
+    bottom: -4px;
+}
+
+
+/* bootstrap.css  修改样式  start */
+.wjs_news .nav-tabs {
+    border-bottom: 1px solid transparent;
+    width: 100%;
+}
+.wjs_news  .nav-tabs > li {
+    width: 100%;
+}
+.wjs_news  .nav-tabs > li > a {
+    width: 60px;
+    height: 60px;
+    line-height: 40px; /* 60  - padding-top - padding-bottom */
+    font-size: 30px;
+    border-radius: 50%;
+    /* margin-top: 30px; */
+    border-color: transparent;
+    background-color: #ccc;
+    color: #fff;
+    display: block;
+    margin: 0  auto 60px ;
+}
+.wjs_news .nav-tabs > li.active > a, 
+.wjs_news .nav-tabs > li.active > a:hover, 
+.wjs_news .nav-tabs > li.active > a:focus {
+    background-color: red;
+    border-color: transparent;
+    color: #fff;
+}
+.wjs_news .nav > li > a:hover, 
+.wjs_news .nav > li > a:focus {
+    background-color: red;
+    border-color: transparent;
+    color: #fff;
+}
+/* bootstrap.css  修改样式  end   */
+.wjs_news .row > div {
+    position: relative;
+    /* background-color: skyblue; */
+}
+.wjs_news  .line {
+    width: 1px;
+    height: 418px;
+    border-left: 1px dashed #ccc;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 0;
+}
+
+.wjs_news .list {
+    list-style: none;
+}
+.wjs_news .list li a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+/* 媒体查询  在小屏幕 和 超小屏幕下   */
+@media (max-width:991px) {
+    .wjs_news  .nav-tabs > li {
+        width: 25%;
+        float: left;
+        margin-top: 30px;
+    }
+}

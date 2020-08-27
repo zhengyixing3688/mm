@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/minireset.css/0.0.2/minireset.css" /> -->
+        <link rel="stylesheet" href="chart.css" />
+        <style>
+            li{
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h3>STEPS</h3>
+            <h4>THIS WEEK</h4>
+            <ul class="chart">
+                <li><span>12345</span></li>
+                <li><span>00000</span></li>
+                <li><span>22222</span></li>
+                <li><span>4444</span></li>
+                <li><span>999</span></li>
+            </ul>
+            <h5>93,000</h5>
+        </div>
+
+        <script>
+            document.querySelector(".card").onclick = function() {
+                this.classList.toggle("active");
+            };
+        </script>
+    </body>
+</html>

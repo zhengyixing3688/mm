@@ -1,0 +1,48 @@
+.wjs_top {
+    height: 42px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+}
+/* 相邻选择器 */
+.wjs_top  .row > div + div {
+    border-left: 1px solid #ccc;
+    height: 42px;
+}
+.wjs_top  .row > div {
+    line-height: 42px;
+    text-align: center;
+}
+.wjs_top  .row > div a {
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+}
+.wjs_top  .row > div .wjs_app {
+    display: block;
+    height: 42px;
+    position: relative;
+    /* background-color: #ccc; */
+}
+.wjs_top  .row > div .wjs_app .text {
+    font-size: 12px;
+}
+.wjs_top  .row > div .wjs_app img {
+    position: absolute;
+    top: 41px;
+    left: 50%;
+    z-index: 10000;
+    margin-left: -60px;
+    border:1px solid #ccc;
+    border-top: 0;
+    display: none;
+}
+.wjs_top  .row > div .wjs_app:hover img {
+    display: block;
+}
+
+.wjs_top  .row > div .wjs_login button {
+    color: #333;
+}
+.margin_left_10 {
+    margin-left: 10px;
+}

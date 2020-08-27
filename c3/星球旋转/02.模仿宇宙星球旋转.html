@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        html,
+        body{
+            background-color: #000;
+            height: 100%;
+        }
+        .container{
+            width: 640px;
+            margin: 0 auto;
+            height: 100%;
+            background-color: #000;
+            position: relative;
+        }
+        .container ul{
+            width: 600px;
+            height: 600px;
+            border: 1px solid #fff;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            margin-left: -300px;
+            margin-top: -300px;
+        }
+        .container .sunny{
+            width: 30px;
+            height: 30px;
+            background-color: yellow;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -15px;
+            margin-top: -15px;
+        }
+        .container ul li{
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ccc;
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%) rotate(0deg);
+            /* margin-left: -40px;
+            margin-top: -40px; */
+        }
+        .container ul li:nth-of-type(1){
+            width: 80px;
+            height: 80px;
+            animation: rotateAimation 10s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(2){
+            width: 120px;
+            height: 120px;
+            animation: rotateAimation 5s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(3){
+            width: 160px;
+            height: 160px;
+            animation: rotateAimation 7s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(4){
+            width:  200px;
+            height: 200px;
+            animation: rotateAimation 9s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(5){
+            width: 240px;
+            height: 240px;
+            animation: rotateAimation 12s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(6){
+            width: 280px;
+            height: 280px;
+            animation: rotateAimation 6s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(7){
+            width:  320px;
+            height: 320px;
+            animation: rotateAimation 14s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(8) {
+            width: 360px;
+            height: 360px;
+            animation: rotateAimation 12s linear 0s infinite normal backwards;
+        }
+        .container ul li:nth-of-type(9) {
+            width: 400px;
+            height: 400px;
+            animation: rotateAimation 11s linear 0s infinite normal backwards;
+        }
+        .container ul li span[class="icon"]{
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: -10px auto 0;
+            /* transform: translate(-50%,-50%) rotate(0deg); */
+        }
+        .container ul li:nth-of-type(1) .icon{
+            background-color: green;
+        }
+        .container ul li:nth-of-type(2) .icon{
+            background-color: red;
+        }
+        .container ul li:nth-of-type(3) .icon{
+            background-color: blue;
+        }
+        .container ul li:nth-of-type(4) .icon{
+            background-color: purple;
+        }
+        .container ul li:nth-of-type(5) .icon{
+            background-color: pink;
+        }
+        .container ul li:nth-of-type(6) .icon{
+            background-color: orange;
+        }
+        .container ul li:nth-of-type(7) .icon{
+            background-color: darkred;
+        }
+        .container ul li:nth-of-type(8) .icon{
+            background-color: skyblue;
+        }
+        .container ul li:nth-of-type(9) .icon{
+            background-color: lightgreen;
+            
+        }
+        @keyframes rotateAimation {
+            from{
+                transform: translate(-50%,-50%) rotate(0deg);
+            }
+            to{
+                transform: translate(-50%,-50%) rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <ul>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+            <li><span class="icon"></span></li>
+        </ul>
+        <div class="sunny"></div>
+    </div>
+    
+</body>
+</html>

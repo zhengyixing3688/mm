@@ -18,10 +18,10 @@ a:focus {
 }
 
 .p_wrapper {
-    width: 1200px;
+    width: 1026px;
     margin: 0 auto;
-    height: 1000px;
-    background-color: #ccc;
+    height: 600px;
+    background-color: black;
 }
 
 .p_header h3 {
@@ -37,12 +37,12 @@ a:focus {
 }
 .p_section .p_main {
     width: 700px;
-    height: 700px;
+    height: 400px;
     background-color: #f0f0f0;
     float: left;
     margin-left: 25px;
     text-align: center;
-    line-height: 700px;
+    line-height: 400px;
     background-color: #000;
 }
 
@@ -51,13 +51,19 @@ a:focus {
     vertical-align: middle;
 }
 .p_section .p_list {
-    width: 450px;
-    height: 700px;
+    width: 250px;
+    height: 400px;
     background-color: skyblue;
     float: left;
     margin-left: 25px;
 }
+/* .p_section .p_list ul{
 
+} */
+.p_section .p_list ul li{
+    margin-top: 5px;
+    border-bottom: 1px solid white;
+}
 .p_footer {
     height: 80px;
     background-color: #333;
